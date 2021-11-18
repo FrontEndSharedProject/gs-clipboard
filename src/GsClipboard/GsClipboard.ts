@@ -44,6 +44,10 @@ class GsClipboard extends Base {
     return this.setCopyData(this.formatSetCopyData(data));
   }
 
+  public formatCopyData(data: SetCopyArgs) {
+    return this.setCopyData(this.formatSetCopyData(data), true);
+  }
+
   /**
    * parse clipboard data before getDataFromClipboard return
    * @param data
