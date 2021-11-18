@@ -5,6 +5,14 @@
   "main": "./dist/gs-clipboard.umd.js",
   "module": "./dist/gs-clipboard.es.js",
   "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carl-jin/gs-clipboard.git"
+  },
+  "homepage": "https://github.com/carl-jin/gs-clipboard#readme",
+  "bugs": {
+    "url": "https://github.com/carl-jin/gs-clipboard/issues"
+  },
   "scripts": {
     "serve": "vite serve",
     "build": "vite build && tsc -p ./tsconfig.dist.json -emitDeclarationOnly && tsc-alias -p ./tsconfig.dist.json"
