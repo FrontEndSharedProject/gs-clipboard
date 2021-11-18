@@ -68,12 +68,17 @@ class GsClipboard extends Base {
     return data;
   }
 
-  private setCopyData(data: CopyDataItemFormat[][]): ClipboardTypes {
+  private setCopyData(
+    data: CopyDataItemFormat[][],
+    returnOnly: boolean = false
+  ): ClipboardTypes {
     const clipboardTypes: ClipboardTypes = {
       text: this.getTextData(data),
       html: this.getHtmlData(data),
       clipboardType: this.getClipboardTypeData(data),
     };
+
+    if (returnOnly) return clipboardTypes;
 
     this.trigger("beforeCopy", clipboardTypes);
 
