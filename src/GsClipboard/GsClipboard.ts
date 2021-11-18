@@ -17,8 +17,13 @@ const defaultGridOptions: Partial<GsClipboardOptions> = {
 class GsClipboard extends Base {
   constructor(props: GsClipboardOptions = {}) {
     super();
-    this.props = Object.assign(defaultGridOptions, props);
-    this.registerHandler(this.props.handlers);
+
+    if (window.navigator?.clipboard?.read) {
+      this.props = Object.assign(defaultGridOptions, props);
+      this.registerHandler(this.props.handlers);
+    } else {
+      throw new Error(`You browser didn't support clipboard api!`);
+    }
   }
 
   public async getDataFromClipboard(): Promise<ClipboardTypes> {
