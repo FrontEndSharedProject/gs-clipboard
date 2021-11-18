@@ -1,6 +1,6 @@
 {
   "name": "gs-clipboard",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "a clipboard manager built for resolve table data format",
   "main": "./dist/gs-clipboard.umd.js",
   "module": "./dist/gs-clipboard.es.js",
