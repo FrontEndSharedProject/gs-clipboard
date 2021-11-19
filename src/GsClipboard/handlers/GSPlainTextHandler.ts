@@ -12,6 +12,6 @@ export class GSPlainTextHandler implements Handler {
   }
 
   parse(value: string): string {
-    return value.trim();
+    return value;
   }
 }
