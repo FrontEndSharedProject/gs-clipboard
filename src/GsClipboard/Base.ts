@@ -190,7 +190,7 @@ export class Base {
     //
     //  if clipboard data from the gs clipboard
     //
-    if (div.querySelector("#gs-clipboard-table") && originalDataDiv) {
+    if (div.querySelector("#gs-clipboard-table") || originalDataDiv) {
       typesData.text = text;
       typesData.html = html;
       typesData.clipboardType = JSON.parse(
