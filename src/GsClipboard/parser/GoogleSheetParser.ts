@@ -59,7 +59,7 @@ export default class GoogleSheetParser implements Parser {
     //  have sheetsValue
     if (td.dataset.sheetsValue) {
       return {
-        value: this.getSheetsValue(td.dataset.sheetsValue),
+        value: td.innerText.trim(),
         type: EBuildInHandlers.PLAIN,
       };
     }
