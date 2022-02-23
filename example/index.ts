@@ -28,7 +28,7 @@ GS.on("copyFailed", (rej) => {
 });
 
 document.getElementById("copy").addEventListener("click", () => {
-  GS.setCopy(["123", "456"]);
+  GS.setCopy([[{value:"a",type:"hyperlink",payload:"sabc"}, {value:"acc",type:"hyperlink",payload:"sabc"}]]);
 });
 
 document.getElementById("getData").addEventListener("click", async () => {

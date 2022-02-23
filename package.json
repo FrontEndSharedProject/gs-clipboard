@@ -14,7 +14,7 @@
     "url": "https://github.com/carl-jin/gs-clipboard/issues"
   },
   "scripts": {
-    "serve": "vite serve",
+    "serve": "vite serve --port 3002",
     "build": "vite build && tsc -p ./tsconfig.dist.json -emitDeclarationOnly && tsc-alias -p ./tsconfig.dist.json"
   },
   "keywords": [
