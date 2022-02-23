@@ -7,9 +7,9 @@ export interface Handler {
   //  handler identifier
   type: string;
   //  transform value which is given by setCopy to text
-  toText(value: any): string;
+  toText(value: any, payload: any): string;
   //  transform value which is given by setCopy to html
-  toHtml(value: any): string;
+  toHtml(value: any, payload: any): string;
   //  parse clipboard data before getDataFromClipboard return
   //  if you want to further modify the output base on built-in process
   //  for example

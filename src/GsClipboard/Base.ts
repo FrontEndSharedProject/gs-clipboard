@@ -94,16 +94,17 @@ export class Base {
   /**
    * transform copy data to text
    * @param data
+   * @param payload
    * @protected
    */
-  protected getTextData(data: CopyDataItemFormat[][]): string {
+  protected getTextData(data: CopyDataItemFormat[][], payload: any): string {
     let text: string = "";
     data.map((row, index) => {
       row.map((item, _index) => {
         const { value, type } = item;
         text += (
           this.handles[type] ?? this.handles[EBuildInHandlers.PLAIN]
-        ).toText(value);
+        ).toText(value, payload);
         text += _index < row.length - 1 ? "\t" : "";
       });
       text += index < data.length - 1 ? "\n" : "";
@@ -115,9 +116,10 @@ export class Base {
   /**
    * transform copy data to html
    * @param data
+   * @param payload
    * @protected
    */
-  protected getHtmlData(data: CopyDataItemFormat[][]): string {
+  protected getHtmlData(data: CopyDataItemFormat[][], payload:any): string {
     let trs: string = "";
 
     //  if only have 1 item in data
@@ -125,7 +127,7 @@ export class Base {
       const { type, value } = data[0][0];
       return (
         this.handles[type] ?? this.handles[EBuildInHandlers.PLAIN]
-      ).toHtml(value);
+      ).toHtml(value, payload);
     }
 
     data.map((row, index) => {
@@ -134,7 +136,7 @@ export class Base {
         const { value, type } = item;
         trs += `<td>${(
           this.handles[type] ?? this.handles[EBuildInHandlers.PLAIN]
-        ).toHtml(value)}</td>`;
+        ).toHtml(value, payload)}</td>`;
       });
       trs += `</tr>`;
     });

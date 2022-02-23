@@ -40,8 +40,8 @@ class GsClipboard extends Base {
     });
   }
 
-  public setCopy(data: SetCopyArgs) {
-    return this.setCopyData(this.formatSetCopyData(data));
+  public setCopy(data: SetCopyArgs, payload: any = undefined) {
+    return this.setCopyData(this.formatSetCopyData(data), false, payload);
   }
 
   public formatCopyData(data: SetCopyArgs) {
@@ -74,11 +74,12 @@ class GsClipboard extends Base {
 
   private setCopyData(
     data: CopyDataItemFormat[][],
-    returnOnly: boolean = false
+    returnOnly: boolean = false,
+    payload: any = undefined
   ): ClipboardTypes {
     const clipboardTypes: ClipboardTypes = {
-      text: this.getTextData(data),
-      html: this.getHtmlData(data),
+      text: this.getTextData(data, payload),
+      html: this.getHtmlData(data, payload),
       clipboardType: this.getClipboardTypeData(data),
     };
 
