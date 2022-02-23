@@ -28,7 +28,7 @@ GS.on("copyFailed", (rej) => {
 });
 
 document.getElementById("copy").addEventListener("click", () => {
-  GS.setCopy(["123", "456"], { foo: "bar" });
+  GS.setCopy(["123", "456"]);
 });
 
 document.getElementById("getData").addEventListener("click", async () => {

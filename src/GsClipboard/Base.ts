@@ -38,6 +38,7 @@ export class Base {
         [
           {
             value: data,
+            payload: undefined,
             type: this.handles[EBuildInHandlers.PLAIN].type,
           },
         ],
@@ -58,6 +59,7 @@ export class Base {
             if (isString(item)) {
               return {
                 value: item,
+                payload:'',
                 type: this.handles[EBuildInHandlers.PLAIN].type,
               };
             } else {
@@ -76,6 +78,7 @@ export class Base {
               return {
                 value: item,
                 type: this.handles[EBuildInHandlers.PLAIN].type,
+                payload:'',
               };
             } else {
               return item as CopyDataItemFormat;
@@ -94,14 +97,13 @@ export class Base {
   /**
    * transform copy data to text
    * @param data
-   * @param payload
    * @protected
    */
-  protected getTextData(data: CopyDataItemFormat[][], payload: any): string {
+  protected getTextData(data: CopyDataItemFormat[][]): string {
     let text: string = "";
     data.map((row, index) => {
       row.map((item, _index) => {
-        const { value, type } = item;
+        const { value, type, payload } = item;
         text += (
           this.handles[type] ?? this.handles[EBuildInHandlers.PLAIN]
         ).toText(value, payload);
@@ -116,15 +118,14 @@ export class Base {
   /**
    * transform copy data to html
    * @param data
-   * @param payload
    * @protected
    */
-  protected getHtmlData(data: CopyDataItemFormat[][], payload:any): string {
+  protected getHtmlData(data: CopyDataItemFormat[][]): string {
     let trs: string = "";
 
     //  if only have 1 item in data
     if (data.length === 1 && data[0].length === 1) {
-      const { type, value } = data[0][0];
+      const { type, value, payload} = data[0][0];
       return (
         this.handles[type] ?? this.handles[EBuildInHandlers.PLAIN]
       ).toHtml(value, payload);
@@ -133,7 +134,7 @@ export class Base {
     data.map((row, index) => {
       trs += `<tr>`;
       row.map((item, _index) => {
-        const { value, type } = item;
+        const { value, type, payload } = item;
         trs += `<td>${(
           this.handles[type] ?? this.handles[EBuildInHandlers.PLAIN]
         ).toHtml(value, payload)}</td>`;
