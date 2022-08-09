@@ -59,7 +59,7 @@ export default class GoogleSheetParser implements Parser {
     //  have sheetsValue
     if (td.dataset.sheetsValue) {
       return {
-        value: td.innerText.trim(),
+        value: td.innerHTML.replace(/\<br\>/g,'\n').trim(),
         type: EBuildInHandlers.PLAIN,
       };
     }
