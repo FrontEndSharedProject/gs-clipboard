@@ -38,6 +38,7 @@ export class Base {
         [
           {
             value: data,
+            payload: undefined,
             type: this.handles[EBuildInHandlers.PLAIN].type,
           },
         ],
@@ -58,6 +59,7 @@ export class Base {
             if (isString(item)) {
               return {
                 value: item,
+                payload:'',
                 type: this.handles[EBuildInHandlers.PLAIN].type,
               };
             } else {
@@ -76,6 +78,7 @@ export class Base {
               return {
                 value: item,
                 type: this.handles[EBuildInHandlers.PLAIN].type,
+                payload:'',
               };
             } else {
               return item as CopyDataItemFormat;
@@ -100,10 +103,10 @@ export class Base {
     let text: string = "";
     data.map((row, index) => {
       row.map((item, _index) => {
-        const { value, type } = item;
+        const { value, type, payload } = item;
         text += (
           this.handles[type] ?? this.handles[EBuildInHandlers.PLAIN]
-        ).toText(value);
+        ).toText(value, payload);
         text += _index < row.length - 1 ? "\t" : "";
       });
       text += index < data.length - 1 ? "\n" : "";
@@ -122,19 +125,19 @@ export class Base {
 
     //  if only have 1 item in data
     if (data.length === 1 && data[0].length === 1) {
-      const { type, value } = data[0][0];
+      const { type, value, payload} = data[0][0];
       return (
         this.handles[type] ?? this.handles[EBuildInHandlers.PLAIN]
-      ).toHtml(value);
+      ).toHtml(value, payload);
     }
 
     data.map((row, index) => {
       trs += `<tr>`;
       row.map((item, _index) => {
-        const { value, type } = item;
+        const { value, type, payload } = item;
         trs += `<td>${(
           this.handles[type] ?? this.handles[EBuildInHandlers.PLAIN]
-        ).toHtml(value)}</td>`;
+        ).toHtml(value, payload)}</td>`;
       });
       trs += `</tr>`;
     });

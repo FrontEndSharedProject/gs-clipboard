@@ -41,7 +41,7 @@ class GsClipboard extends Base {
   }
 
   public setCopy(data: SetCopyArgs) {
-    return this.setCopyData(this.formatSetCopyData(data));
+    return this.setCopyData(this.formatSetCopyData(data), false);
   }
 
   public formatCopyData(data: SetCopyArgs) {

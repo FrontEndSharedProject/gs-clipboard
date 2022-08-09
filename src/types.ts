@@ -30,6 +30,7 @@ export interface GsClipboardOptions {
 export interface CopyDataItemFormat {
   value: string | any[] | Record<string, any>;
   type: string;
+  payload?:any;
 }
 
 export type UnknownHtmlParserOutput =

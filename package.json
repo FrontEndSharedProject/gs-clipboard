@@ -1,6 +1,6 @@
 {
   "name": "gs-clipboard",
-  "version": "0.0.10",
+  "version": "1.1.2",
   "description": "a clipboard manager built for resolve table data format",
   "main": "./dist/gs-clipboard.umd.js",
   "module": "./dist/gs-clipboard.es.js",
@@ -14,7 +14,7 @@
     "url": "https://github.com/carl-jin/gs-clipboard/issues"
   },
   "scripts": {
-    "serve": "vite serve",
+    "serve": "vite serve --port 3002",
     "build": "vite build && tsc -p ./tsconfig.dist.json -emitDeclarationOnly && tsc-alias -p ./tsconfig.dist.json"
   },
   "keywords": [
