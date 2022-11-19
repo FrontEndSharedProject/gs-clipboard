@@ -1,9 +1,10 @@
 import { GsClipboard } from "@/GsClipboard/GsClipboard";
 import { Handler } from "@/GsClipboard/handlers";
+import { EBuildInHandlers } from '@/index'
 
 class HyperlinkHandler implements Handler {
   public type = "hyperlink";
-  toText(value: any, payload:any): string {
+  toText(value: any, payload: any): string {
     console.log(payload);
     return value;
   }
@@ -28,7 +29,15 @@ GS.on("copyFailed", (rej) => {
 });
 
 document.getElementById("copy").addEventListener("click", () => {
-  GS.setCopy([[{value:"a",type:"hyperlink",payload:"sabc"}, {value:"acc",type:"hyperlink",payload:"sabc"}]]);
+  // GS.setCopy([[{value:"a",type:"hyperlink",payload:"sabc"}, {value:"acc",type:"hyperlink",payload:"sabc"}]]);
+  GS.setCopy([{
+    value: {
+      link: "https://google.com",
+      title: "google",
+      attrs:{}
+    },
+    type: EBuildInHandlers.HYPERLINK
+  }]);
 });
 
 document.getElementById("getData").addEventListener("click", async () => {

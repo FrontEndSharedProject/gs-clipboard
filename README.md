@@ -36,6 +36,18 @@ document.getElementById("copy").addEventListener("click", () => {
   GS.setCopy(["123", "456"]);
 });
 
+//  set as hyperlink
+document.getElementById("copy").addEventListener("click", () => {
+  GS.setCopy([{
+    value: {
+      link: "https://google.com",
+      title: "google",
+      attrs:{}
+    },
+    type: EBuildInHandlers.HYPERLINK
+  }]);
+});
+
 document.getElementById("getData").addEventListener("click", async () => {
   console.log(await GS.getDataFromClipboard());
 });

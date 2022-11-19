@@ -8,7 +8,7 @@ interface HyperlinkValue {
 }
 
 export class GSHyperlinkHandler implements Handler {
-  public type: EBuildInHandlers = EBuildInHandlers.IMAGE;
+  public type: EBuildInHandlers = EBuildInHandlers.HYPERLINK;
 
   toText(value: HyperlinkValue): string {
     return value.title ?? "";
