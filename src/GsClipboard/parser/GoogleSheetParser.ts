@@ -24,7 +24,7 @@ export default class GoogleSheetParser implements Parser {
     try {
       //  {"1":2,"2":"value"}
       const data = JSON.parse(sheetsValue);
-      return data[data[1]];
+      return data[data[1]] ? data[data[1]].replaceAll('&nbsp;',' ') : '';
     } catch (e) {
       return "";
     }
